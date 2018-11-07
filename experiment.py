@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 from src.BaseModel import BaseModel
 from src.FullyConnectedArch import FullyConnectedModel
 from src.CNNArch import CNNModel
-
+#from torchsummary import summary
 
 parser = ArgumentParser()
 parser.add_argument('--mode', type=str, help='train/infer')
@@ -20,8 +20,8 @@ def main():
 
     trainConfig = params['training']
     evalConfig = params['evaluation']
-
     model = BaseModel(trainConfig)
+
     if trainConfig['model'] == 'CNNArch':
         model.model = CNNModel(trainConfig)
 
@@ -30,7 +30,7 @@ def main():
 
     else:
         raise("Model specified not found")
-
+    #summary(model.model.cuda(), (3, 256, 256))
     if args.mode == 'train':
         model.train(trainConfig)
 

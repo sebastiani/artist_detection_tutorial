@@ -1,16 +1,17 @@
 training:
         model: 'CNNArch'
-        dataset: 'data/preprocessed/art_dataset.pkl'
+        dataset: 'data/preprocessed/art_dataset50px.pkl'
         epochs: 30
-        batch_size: 128
+        batch_size: 16
         momentum: 0.9
         learning_rate: 0.001
-        cuda: False
+        cuda: True
         pool1: False
         pool2: False
         bn: True
         dropout: 0.4
         seed: 3
+        saved_models: 'models/'
 evaluation:
         model: 'CNNArch'
-        dataset: 'art_dataset.pkl'
+        dataset: 'art_dataset50px.pkl'
